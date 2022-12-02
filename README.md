@@ -53,11 +53,12 @@ Añadir a index.html:
 ```
 
 Y los imports:
-``
+```
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { FlexLayoutModule } from '@angular/flex-layout';
 ```
+
 ``` 
 import 'hammerjs';
 ```
