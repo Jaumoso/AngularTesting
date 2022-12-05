@@ -20,6 +20,7 @@ import { MenuComponent } from './menu/menu.component';
     BrowserAnimationsModule,
     FlexLayoutModule,
     MatToolbarModule,
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
