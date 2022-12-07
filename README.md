@@ -86,4 +86,19 @@ body {
 }
 
 ```
+----------------------------------------
+### Font awesome
+```
+npm install font-awesome@4.7.0 --save
+```
 
+Crear archivo _variables.scss en root del proyecto:
+```
+$fa-font-path: '../node_modules/font-awesome/fonts'
+```
+
+Importar font awesome en styles.scss:
+```
+@import 'variables';
+@import '../node_modules/font-awesome/scss/font-awesome.scss';
+```
