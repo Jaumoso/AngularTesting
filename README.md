@@ -109,6 +109,9 @@ Importar font awesome en styles.scss:
 npm install -g json-server
 
 ```
+
+Crear la carpeta json-server en cualquier parte. dentro, añadir la carpeta public y json.db con la información de base de datos.
+
 ```
 cd C\:[path]
 json-server --watch db.json -d 2000
