@@ -102,3 +102,14 @@ Importar font awesome en styles.scss:
 @import 'variables';
 @import '../node_modules/font-awesome/scss/font-awesome.scss';
 ```
+
+----------------------------------------
+### JSON SERVER
+```
+npm install -g json-server
+
+```
+```
+cd C\:[path]
+json-server --watch db.json -d 2000
+```
