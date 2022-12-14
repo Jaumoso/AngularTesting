@@ -1,0 +1,10 @@
+mat-slider {
+    width: 300px;
+  }
+
+  :host ::ng-deep mat-slider.mat-slider.mat-slider-horizontal .mat-slider-ticks {
+
+    // this will force show the ticks
+    opacity: 1;
+    background-size: 25% 2px !important;
+  }

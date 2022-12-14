@@ -26,25 +26,60 @@
         <button mat-button [routerLink]="['/dishdetail', next]" class="fa fa-chevron-right fa-lg"></button>
       </mat-card-actions>
     </mat-card>
-    <div fxFlex [hidden]="dish">
-      <mat-spinner></mat-spinner><h4>Loading... Please Wait</h4>
-    </div>
+  </div>
+  <div fxFlex [hidden]="dish">
+    <mat-spinner></mat-spinner><h4>Loading... Please Wait</h4>
   </div>
 
   <div fxFlex="40" *ngIf="dish">
     <div> 
-      <div>
-        <h3>Comments</h3>
-        <br>
-        <mat-list *ngFor="let comment of dish.comments">
-          <mat-list-item>
-            <p matLine>{{comment.comment}}</p>
-            <span matLine>{{comment.rating}} Stars</span>
-            <span matLine>-- {{comment.author}} {{comment.date | date}}</span>
-          </mat-list-item>
-        </mat-list>
-      </div>
+      <h3>Comments</h3>
+      <br>
+      <mat-list *ngFor="let comment of dish.comments">
+        <mat-list-item>
+          <p matLine>{{comment.comment}}</p>
+          <span matLine>{{comment.rating}} Stars</span>
+          <span matLine>-- {{comment.author}} {{comment.date | date}}</span>
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <!-- I dont't know how to format the form so it ocuppies half the screen,
+    as in the example. -->
+    <div>
+      <mat-list>
+        <mat-list-item *ngIf="commentForm.valid">
+          <p matLine>{{commentForm.value.comment}}</p>
+          <span matLine>{{commentForm.value.rating}} Stars</span>
+          <span matLine>-- {{commentForm.value.author}}</span>
+        </mat-list-item>
+      </mat-list>
+    </div>
+    <div>
+<!--       <p>{{commentForm.value | json }} {{commentForm.status}}</p> -->
+      <form nonvalidate [formGroup]="commentForm" #cform="ngForm" (ngSubmit)="onSubmit()">
+        <p>
+          <mat-form-field>
+            <input matInput formControlName="author" type="text" placeholder="Name" required>
+            <mat-error *ngIf="formErrors.author">
+              {{formErrors.author}}
+            </mat-error>
+          </mat-form-field>
+        </p>
+        <p>
+          <mat-slider min="1" max="5" step="1" formControlName="rating" showTickMarks thumbLabel discrete>
+            <input matSliderThumb >
+          </mat-slider>
+        </p>
+        <p>
+          <mat-form-field>
+            <textarea matInput formControlName="comment" type="text" placeholder="Comment" required cols="20" rows="6"></textarea>
+            <mat-error *ngIf="formErrors.comment">
+              {{formErrors.comment}}
+            </mat-error>
+          </mat-form-field>
+        </p>
+        <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="commentForm.invalid" >Submit</button>
+      </form>
     </div>
   </div>
-
 </div>
