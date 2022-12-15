@@ -9,12 +9,13 @@ import { LeaderService } from '../services/leader.service';
 export class AboutComponent implements OnInit {
 
   leaders: Leader[];
+  errMess: string;
 
   constructor(private leaderService: LeaderService) { }
 
   ngOnInit() {
    this.leaderService.getLeaders()
-   .subscribe((leader) =>  this.leaders = leader);
+   .subscribe((leader) =>  this.leaders = leader, errmess => this.errMess = <any>errmess);
   }
 
 }
