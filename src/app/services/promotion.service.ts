@@ -30,5 +30,4 @@ export class PromotionService {
     .pipe(catchError(this.processHTTPMsgService.handleError));
   }
 
-
 }

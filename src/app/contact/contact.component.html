@@ -35,7 +35,7 @@
       </div>
     </div>
   </div>
-  <div fxFlex fxFlexOffset="20px" class="form-size">
+  <div fxFlex fxFlexOffset="20px" class="form-size" *ngIf="!feedback && !load" [@expand]>
     <h3>Send us your Feedback</h3>
     <!-- <p>{{feedbackForm.value | json }} {{feedbackForm.status}}</p> -->
     <form nonvalidate [formGroup]="feedbackForm" #fform="ngForm" (ngSubmit)="onSubmit()">
@@ -86,5 +86,26 @@
       </p>
       <button type="submit" mat-button class="background-primary text-floral-white" [disabled]="feedbackForm.invalid" >Submit</button>
     </form>
+  </div>
+  <!-- LOADING -->
+  <div fxFlex [hidden]="!feedback || errMess">
+    <mat-spinner></mat-spinner><h4>Loading... Please Wait</h4>
+  </div>
+  <!-- FEEDBACK INFO -->
+  <div fxFlex [hidden]="!load" [@expand]> <!-- (feedback && !load) -->
+    <div [hidden]="feedback">
+      <h3>Your Submission</h3>
+      <p>First Name: {{feedbackcopy.firstname}}</p>
+      <p>Last Name: {{feedbackcopy.lastname}}</p>
+      <p>Tel. Number: {{feedbackcopy.telnum}}</p>
+      <p>Email: {{feedbackcopy.email}}</p>
+      <p>Contact You?: {{feedbackcopy.agree}}</p>
+      <p>How?: {{feedbackcopy.contacttype}}</p>
+      <p>Message: {{feedbackcopy.message}}</p>
+    </div>
+  </div>
+  <div fxFlex *ngIf="errMess">
+    <h2>Error</h2>
+    <h4>{{errMess}}</h4>
   </div>
 </div>
